@@ -1,4 +1,5 @@
 def substrings (word, dictionary)
+    word_lowcase = word.downcase
     times_found = 0
     word_array = word.split("")
     longest_substring = dictionary.max_by(&:length)
@@ -20,9 +21,26 @@ def substrings (word, dictionary)
                 remaining_char -= 1
                 count += 1
                 puts working_string
+                if working_string === word_lowcase
+                    puts "Match Found"
+                else
+                    puts "No Match Found"
+                end
             end
         end
     end
 end
 
-substrings("do", ["donkey"])
+substrings("do", ["donut"])
+
+
+# word_array.each_with_index do |item, index|
+#     count = (index + 1)
+#     working_string = ""
+    
+# end
+
+
+
+
+
