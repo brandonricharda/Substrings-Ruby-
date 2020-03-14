@@ -3,7 +3,9 @@ def substrings (word, dictionary)
     times_found = 0
     word_array = word.split("")
     length_to_check = word.length
-
+    dictionary_cap = dictionary.map(&:upcase)
+    result_hash = {}
+    result_hash.default = 0
     word_array.each_with_index do |item, index|
         count = (index + 1)
         working_string = ""
@@ -18,13 +20,15 @@ def substrings (word, dictionary)
             end
             remaining_char -= 1
             count += 1
-            puts working_string
+            working_string_cap = working_string.upcase
+            if dictionary_cap.include? working_string_cap
+                result_hash[working_string] += 1
+            end
         end
     end
+    puts result_hash
 end
 
-substrings("doctor", ["donut"])
+dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-
-
-
+substrings("Howdy partner, sit down! How's it going?", dictionary)
