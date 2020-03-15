@@ -12,14 +12,13 @@ def substrings (word, dictionary)
         remaining_char = (length_to_check - index)
         while word_array[count] != nil
             if working_string.length == 0
-                if remaining_char >= 2
-                    working_string += item + word_array[count]
-                end
+                working_string += item
+                remaining_char -= 1
             else
                 working_string += word_array[count]
+                remaining_char -= 1
+                count += 1
             end
-            remaining_char -= 1
-            count += 1
             working_string_cap = working_string.upcase
             if dictionary_cap.include? working_string_cap
                 result_hash[working_string] += 1
